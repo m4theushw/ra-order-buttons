@@ -2,7 +2,11 @@
 
 This addon provides a component which renders up and down buttons to reorder records in [react-admin](https://github.com/marmelab/react-admin). It connects with your Data Provider by dispatching a `move` action. All the magic is done in the backend so a custom logic is needed to make it work correctly. Check the backend section below to learn how to adapt your API.
 
-## Instalation
+<p align="center">
+  <img width="600" src="https://user-images.githubusercontent.com/42154031/69111099-3f635e80-0a5b-11ea-9446-902a0769ebd9.gif">
+</p>
+
+## Installation
 
 ```
 npm install --save ra-order-buttons
