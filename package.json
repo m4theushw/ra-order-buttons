@@ -1,6 +1,6 @@
 {
   "name": "ra-order-buttons",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "Adds up and down buttons to reorder records",
   "main": "lib/index.js",
   "module": "esm/index.js",
