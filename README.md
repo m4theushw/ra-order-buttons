@@ -34,13 +34,13 @@ export const ProductList = props => (
 );
 ```
 
-In your Data Provider you sould handle the new request type `move` and map it to the appropriate API call. The Data Provider is called as follow:
+In your Data Provider you will need to handle the new request type `move` and map it to the appropriate API call. It is called as follow:
 
 ```js
 dataProvider.move('products', {
   id: 123, // the record id
   direction: 'up', // which button was clicked
-  filter: { name: 'Hello World' }, // the filters set for the listing
+  filter: { name: 'foo' }, // the filters used in the listing
 });
 ```
 
@@ -54,17 +54,19 @@ When user clicks in one of the two buttons we have to switch the order value bet
 $dsn = 'mysql:host=127.0.0.1;dbname=mydb';
 $pdo = new PDO($dsn, 'root', 'secret');
 
-$id = intval($_GET['id']);
-$direction = $_GET['direction'];
-$filter = json_decode($_GET['filter']);
+$id         = intval($_GET['id']);
+$direction  = $_GET['direction'];
+$filter     = json_decode($_GET['filter']);
 
 $record = $pdo->query('SELECT ordering FROM products WHERE id = ' . $id);
 $ordering = $record->fetchColumn();
 
 $conditions = [];
+
 if ($filter->q) {
     $conditions[] = 'name LIKE :search';
 }
+
 if ($direction === 'up') {
     $conditions[] = 'ordering < :ordering';
 } else {
@@ -78,6 +80,7 @@ $sql .= ' LIMIT 1';
 
 $stmt = $pdo->prepare($sql);
 $stmt->bindValue(':ordering', $ordering);
+
 if ($filter->q) {
     $stmt->bindValue(':search', "%{$filter->q}%");
 }
