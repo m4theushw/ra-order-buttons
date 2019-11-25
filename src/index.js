@@ -35,13 +35,13 @@ const OrderButtons = ({ record, resource, source }) => {
   return (
     <ButtonGroup
       size="small"
-      disabled={sort !== source || order !== 'ASC' || !record.ordering}
+      disabled={sort !== source || order !== 'ASC' || !record[source]}
     >
-      <Button>
-        <KeyboardArrowUpIcon onClick={handleUp} />
+      <Button onClick={handleUp} title="Move up">
+        <KeyboardArrowUpIcon />
       </Button>
-      <Button>
-        <KeyboardArrowDownIcon onClick={handleDown} />
+      <Button onClick={handleDown} title="Move down">
+        <KeyboardArrowDownIcon />
       </Button>
     </ButtonGroup>
   );
